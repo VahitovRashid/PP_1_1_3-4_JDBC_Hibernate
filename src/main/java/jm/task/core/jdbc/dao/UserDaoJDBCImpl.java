@@ -27,8 +27,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void createUsersTable() {
-        try {
-            Statement statement = connection.createStatement();
+        try (Statement statement = connection.createStatement()) {
 
             String SQL = "CREATE TABLE user (\n" +
                     "  id int,\n" +
