@@ -29,7 +29,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
         try (Statement statement = connection.createStatement()) {
 
-            String SQL = "CREATE TABLE user (\n" +
+            String SQL = "CREATE TABLE IF NOT EXISTS user (\n" +
                     "  id int,\n" +
                     "  name varchar(15),\n" +
                     "  lastname varchar(25),\n" +
@@ -53,7 +53,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         try (Statement statement = connection.createStatement()) {
 
-            String SQL = "DROP TABLE user";
+            String SQL = "DROP TABLE IF EXISTS user";
 
             statement.executeUpdate(SQL);
             connection.commit();
